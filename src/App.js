@@ -1,26 +1,30 @@
+import './css/App.css';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/header/Header';
+import Search from './components/controls/Search'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    foods: [],
+    loading: false,
+    display: 'log'
+  }
+
+  searchFoods = (query) => {
+    console.log(query);
+  }
+
+  render(){
+    return (
+      <div className="App container">
+        <Header/>
+        <div id="control-panel" className="flex-container">
+          <button id="log-btn" className="btn add-food"><i className="fas fa-book"></i> Logged</button>
+          <Search searchFoods={this.searchFoods}/>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

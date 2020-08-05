@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-weight: 300;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  width: 768px;
+  margin: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Utilities */
+.flex-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+/* Header */
+#main-header {
+  width: 100%;
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /* The total macros displayed at the top of the screen */
+}
+
+#main-header #calorie-progress {
+  -ms-flex-item-align: center;
+      align-self: center;
+  width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  /* displays the total calorie count for the day */
+  /* A progress bar that shows the progress made toward the calorie goal */
+}
+
+#main-header #calorie-progress h1 {
+  font-size: 60px;
+  padding-right: 200px;
+  color: #333;
+}
+
+#main-header #calorie-progress h1 .sub-content {
+  font-size: 20px;
+  color: grey;
+}
+
+#main-header #calorie-progress .load-bar {
+  margin: 10px;
+  margin-right: 100px;
+  width: 300px;
+  height: 3px;
+  background: lightgrey;
+}
+
+#main-header #calorie-progress .load-bar .prog {
+  height: 100%;
+  background: grey;
+  -webkit-transition: width .8s ease-out;
+  transition: width .8s ease-out;
+}
+
+#main-header #macros {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#main-header #macros ul {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  line-height: 1.8em;
+  font-size: 18px;
+}
+
+#main-header #macros ul li {
+  color: #333;
+}
+
+.searchbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.searchbar .searchbox {
+  height: 50px;
+  width: 280px;
+  padding-left: 10px;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  border-right: none;
+}
+
+.searchbar .searchbox:focus {
+  outline: none;
+}
+
+.searchbar .search-btn {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+}
+
+.searchbar .search-btn:focus {
+  outline: none;
+}
+
+.searchbar .search-btn:hover {
+  color: black;
+  border-color: black;
+}
+/*# sourceMappingURL=App.css.map */
