@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 /*
   @desc   The Search component returns a form with a text input field and a submit input.
   @props  This component takes in a function prop to execute when the form is submitted. The function will be passed the string from the text input.
 */
 
-export class Searchbar extends Component {
+class Search extends Component {
   state = {
     text: ''
+  }
+  
+  static propTypes = {
+    searchFoods: PropTypes.func.isRequired
   }
 
   handleChange = e => this.setState({ text: e.target.value });
@@ -28,4 +33,4 @@ export class Searchbar extends Component {
   }
 }
 
-export default Searchbar;
+export default Search;
