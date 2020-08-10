@@ -1,27 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ProgBar from './ProgBar';
 
-export class Calories extends Component {
-  static defaultProps = {
-    totalCalories: 0,
-    goalCalories: 3000
-  }
+const Calories = ({ calories }) => {
+  return (
+    <div id="calorie-progress">
+      <h1>{calories}<span className="sub-content"> of {3000} calories</span></h1>
+      <ProgBar calories={calories} calorieGoal={3000}/>
+    </div>
+  )
+}
 
-  static propTypes = {
-    totalCalories: PropTypes.number.isRequired,
-    goalCalories: PropTypes.number.isRequired
-  }
+Calories.defaultProps = {
+  calorieGoal: 3000
+}
 
-  render() {
-    const { totalCalories, goalCalories } = this.props;
-    return (
-      <div id="calorie-progress">
-        <h1>{totalCalories}<span className="sub-content"> of {goalCalories} calories</span></h1>
-        <ProgBar/>
-      </div>
-    )
-  }
+Calories.propTypes = {
+  calories: PropTypes.number.isRequired,
+  calorieGoal: PropTypes.number.isRequired,
 }
 
 export default Calories;

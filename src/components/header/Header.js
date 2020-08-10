@@ -1,16 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Calories from './Calories';
 import Macros from './Macros';
+import PropTypes from 'prop-types';
 
-export class Header extends Component {
-  render() {
-    return (
-      <header id="main-header">
-        <Calories/>
-        <Macros/>
-      </header>
-    )
-  }
+const Header = ({ nutrients }) => {
+  return (
+    <header id="main-header">
+      <Calories calories={nutrients.calories}/>
+      <Macros nutrients={nutrients}/>
+    </header>
+  )
+}
+
+Header.propTypes = {
+  nutrients: PropTypes.object.isRequired
 }
 
 export default Header;

@@ -13,6 +13,10 @@ $background-color: white;
   font-family: $font-family;
 }
 
+body, html {
+  height: 100%;
+}
+
 .btn-icon {
   border: none;
   background: $background-color;
@@ -24,6 +28,9 @@ $background-color: white;
 .container {
   width: 768px;
   margin: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 ul { list-style: none; }
@@ -40,6 +47,10 @@ ul { list-style: none; }
   background-color: $background-color;
 }
 
+#root {
+  height: 100%;
+}
+
 /* Header */
 
 #main-header {
@@ -52,12 +63,11 @@ ul { list-style: none; }
     width: 60%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
 
     /* displays the total calorie count for the day */
     h1 {
       font-size: 60px;
-      padding-right: 200px;
       color: $dark-color;
 
       .sub-content {
@@ -136,6 +146,7 @@ ul { list-style: none; }
   height: auto;
   width: 100%;
   flex-direction: column;
+  flex-grow: 1;
   .food-item {
     display: flex;
     align-items: center;
@@ -162,6 +173,18 @@ ul { list-style: none; }
         margin-right: 20px;
       }
     }
+  }
+  .center-msg {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .no-results-msg {
+    color: $xlight-color;
+    padding-bottom: 18%;
+    font-size: 18px;
   }
 }
 // Foods Component (edit window)

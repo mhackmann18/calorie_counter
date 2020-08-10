@@ -7,6 +7,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+body, html {
+  height: 100%;
+}
+
 .btn-icon {
   border: none;
   background: white;
@@ -23,6 +27,14 @@
 .container {
   width: 768px;
   margin: auto;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 ul {
@@ -43,6 +55,10 @@ ul {
 
 .fas {
   background-color: white;
+}
+
+#root {
+  height: 100%;
 }
 
 /* Header */
@@ -66,16 +82,15 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   /* displays the total calorie count for the day */
   /* A progress bar that shows the progress made toward the calorie goal */
 }
 
 #main-header #calorie-progress h1 {
   font-size: 60px;
-  padding-right: 200px;
   color: #333;
 }
 
@@ -172,6 +187,9 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 .foods .food-item {
@@ -206,6 +224,28 @@ ul {
 
 .foods .food-item-btns button {
   margin-right: 20px;
+}
+
+.foods .center-msg {
+  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.foods .no-results-msg {
+  color: lightgrey;
+  padding-bottom: 18%;
+  font-size: 18px;
 }
 
 .food-item-area {

@@ -1,22 +1,23 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-export class ProgBar extends Component {
-  static defaultProps = {
-    width: '0px'
-  }
+const ProgBar = ({ calories, calorieGoal }) => {
+  const [width, setWidth] = useState(calories/calorieGoal*100)
 
-  static propTypes = {
-    width: PropTypes.string.isRequired
-  }
+  useEffect(() => {
+    calories/calorieGoal*100 < 100 ? setWidth(calories/calorieGoal*100) : setWidth(100);
+  }, [calories, calorieGoal]);
 
-  render() {
-    return (
-      <div className="load-bar">
-        <div className="prog" style={{ width: this.props.width }}></div>
-      </div>
-    )
-  }
+  return (
+    <div className="load-bar">
+      <div className="prog" style={{ width: `${width}%` }}></div>
+    </div>
+  )
+}
+
+ProgBar.propTypes = {
+  calories: PropTypes.number.isRequired,
+  calorieGoal: PropTypes.number.isRequired
 }
 
 export default ProgBar;

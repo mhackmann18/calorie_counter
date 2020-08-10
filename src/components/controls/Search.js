@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 /*
@@ -6,31 +6,27 @@ import PropTypes from 'prop-types';
   @props  This component takes in a function prop to execute when the form is submitted. The function will be passed the string from the text input.
 */
 
-class Search extends Component {
-  state = {
-    text: ''
-  }
-  
-  static propTypes = {
-    searchFoods: PropTypes.func.isRequired
-  }
+const Search = ({ searchFoods }) => {
+  const [text, setText] = useState('');
 
-  handleChange = e => this.setState({ text: e.target.value });
+  const handleChange = e => setText(e.target.value);
 
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
     e.target.querySelector('.searchbox').blur();
-    this.props.searchFoods(this.state.text);
+    searchFoods(text);
   }
 
-  render() {
-    return (
-      <form className="searchbar" onSubmit={this.handleSubmit}>
-        <input className="searchbox" type="text" onChange={this.handleChange} placeholder="Search for foods" spellCheck="false"></input>
-        <button className="search-btn" type="submit" value="Search"><i className="fas fa-search"></i></button>
-      </form>
-    )
-  }
+  return (
+    <form className="searchbar" onSubmit={handleSubmit}>
+      <input className="searchbox" type="text" onChange={handleChange} placeholder="Search for foods" spellCheck="false"></input>
+      <button className="search-btn" type="submit" value="Search"><i className="fas fa-search"></i></button>
+    </form>
+  )
+}
+
+Search.propTypes = {
+  searchFoods: PropTypes.func.isRequired
 }
 
 export default Search;
