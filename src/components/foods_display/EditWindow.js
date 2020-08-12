@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ServingsForm from './ServingsForm';
 
@@ -10,7 +10,7 @@ import ServingsForm from './ServingsForm';
         Takes in a function, getServings, which will be called everytime the servings are changed
 */
 
-const EditWindow = ({ food, getServings, saveChanges }) => {
+const EditWindow = ({ food, getServings, saveChanges, checkmark }) => {
   const { name, servingSize, brand, calories, protein, fat, carbs, id, servings } = food;
   const [newFood, setNewFood] = useState({
     name,
@@ -23,6 +23,14 @@ const EditWindow = ({ food, getServings, saveChanges }) => {
     id,
     servings
   });
+  const [checkMarkClicked, setCheckMarkClicked] = useState(checkmark);
+
+  useEffect(()=>{
+    setCheckMarkClicked(checkmark);
+    if(checkMarkClicked === true){
+      saveChanges(newFood);
+    }
+  }, [checkmark, checkMarkClicked, newFood, saveChanges]);
 
   const handleSubmit = () => {
     passFoodUp();
@@ -39,10 +47,10 @@ const EditWindow = ({ food, getServings, saveChanges }) => {
       name,
       servingSize,
       brand,
-      calories: parseFloat(calories * newServings),
-      protein: parseFloat(protein * newServings),
-      fat: parseFloat(fat * newServings),
-      carbs: parseFloat(carbs * newServings),
+      calories: parseFloat(calories / servings * newServings),
+      protein: parseFloat(protein / servings * newServings),
+      fat: parseFloat(fat / servings * newServings),
+      carbs: parseFloat(carbs / servings * newServings),
       id,
       servings: parseFloat(newServings)
     });
@@ -58,7 +66,7 @@ const EditWindow = ({ food, getServings, saveChanges }) => {
           <li>Fat: {parseInt(newFood.fat)} g</li>
         </ul>
       </div>
-      <ServingsForm getServings={changeServings} onSubmit={handleSubmit}/>
+      <ServingsForm getServings={changeServings} onSubmit={handleSubmit} newServings={newFood.servings}/>
     </div>
   )
 }
@@ -66,7 +74,8 @@ const EditWindow = ({ food, getServings, saveChanges }) => {
 EditWindow.propTypes = {
   food: PropTypes.object.isRequired,
   getServings: PropTypes.func.isRequired,
-  saveChanges: PropTypes.func.isRequired
+  saveChanges: PropTypes.func.isRequired,
+  checkmark: PropTypes.bool.isRequired
 }
 
 

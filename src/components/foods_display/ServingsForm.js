@@ -9,8 +9,8 @@ import PropTypes from 'prop-types';
           onSubmit() will be called when the user submits the form.
 */
 
-const ServingsForm = ({ getServings, onSubmit }) => {
-  const [input, setInput] = useState(1);
+const ServingsForm = ({ getServings, onSubmit, newServings }) => {
+  const [input, setInput] = useState(newServings);
 
   const checkKey = (e) => {
     if(validateInput(e.key) === false || e.target.value.length > 3){
