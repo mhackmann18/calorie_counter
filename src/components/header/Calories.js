@@ -1,23 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import ProgBar from './ProgBar';
+import FoodContext from '../../context/food/foodContext';
 
-const Calories = ({ calories }) => {
+const Calories = () => {
+  const foodContext = useContext(FoodContext);
+  const { calories } = foodContext.nutrients;
+
   return (
     <div id="calorie-progress">
-      <h1>{calories}<span className="sub-content"> of {3000} calories</span></h1>
-      <ProgBar calories={calories} calorieGoal={3000}/>
+      <h1>{parseInt(calories)}<span className="sub-content"> of {3000} calories</span></h1>
+      <ProgBar/>
     </div>
   )
-}
-
-Calories.defaultProps = {
-  calorieGoal: 3000
-}
-
-Calories.propTypes = {
-  calories: PropTypes.number.isRequired,
-  calorieGoal: PropTypes.number.isRequired,
 }
 
 export default Calories;

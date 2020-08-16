@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect, useContext } from 'react';
+import FoodContext from '../../context/food/foodContext';
 
-const Macros = ({ nutrients }) => { 
-  const { protein, fat, carbs } = nutrients;
+const Macros = () => { 
+  const foodContext = useContext(FoodContext);
+  const { protein, fat, carbs } = foodContext.nutrients;
   const [totalProtein, setProtein] = useState(0);
   const [totalFat, setFat] = useState(0);
   const [totalCarbs, setCarbs] = useState(0);
@@ -16,16 +17,12 @@ const Macros = ({ nutrients }) => {
   return (
     <div id="macros">
       <ul>
-        <li>Protein: {totalProtein} g</li>
-        <li>Carbs: {totalCarbs} g</li>
-        <li>Fat: {totalFat} g</li>
+        <li>Protein: {parseInt(totalProtein)} g</li>
+        <li>Carbs: {parseInt(totalCarbs)} g</li>
+        <li>Fat: {parseInt(totalFat)} g</li>
       </ul>
     </div>
   ) 
-}
-
-Macros.propTypes = {
-  nutrients: PropTypes.object.isRequired
 }
 
 export default Macros;

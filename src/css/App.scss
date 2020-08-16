@@ -47,6 +47,10 @@ ul { list-style: none; }
   background-color: $background-color;
 }
 
+.padding-left {
+  padding-left: 8px;
+}
+
 #root {
   height: 100%;
 }
@@ -109,6 +113,9 @@ ul { list-style: none; }
 
 // Button component
 .btn {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
   border-radius: 0;
   border-style: solid;
   border-width: 1px;
@@ -118,11 +125,6 @@ ul { list-style: none; }
   width: auto;
   padding: 0 12px 0 12px;
   color: $light-color;
-  &:focus { 
-    outline: none; 
-    color: $dark-color;
-    border-color: $dark-color;
-  }
   &:hover { 
     cursor: pointer; 
     color: $dark-color;
@@ -210,11 +212,29 @@ ul { list-style: none; }
     font-size: 18px;
   }
 }
+// Custom Food message
+.custom-food-msg {
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  color: $xlight-color;
+  font-size: 15px;
+  flex-direction: column;
+  .link {
+    padding-top: 7px;
+    color: $xlight-color;
+    font-size: 13px;
+    &:hover { color: $light-color; }
+  }
+}
 // Foods Component (edit window)
 .food-item-area {
   display: flex;
   flex-direction: column;
-  &:last-child { 
+  &:nth-last-child(2) { 
+    border-bottom: 1px solid $xlight-color;
+  }
+  &:nth-last-child(1) { 
     border-bottom: 1px solid $xlight-color;
   }
 }
@@ -252,5 +272,65 @@ ul { list-style: none; }
       display: none;
     }
     &:focus { outline: none }
+  }
+}
+
+// Custom food component
+.custom-food-form {
+  font-size: 15px;
+  color: $light-color;
+  h1 {
+    color: $light-color;
+    padding-bottom: 30px;
+  }
+  align-self: center;
+  width: 560px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  li {
+    padding-bottom: 30px;
+    display: flex;
+    align-items: center;
+  }
+  .inline {
+    display: inline;
+  }
+  label {
+    margin-right: 6px;
+  }
+  input {
+    border-radius: 0;
+    border-width: 1px;
+    border-color: $xlight-color;
+    border-style: solid;
+    height: 40px;
+    padding: 5px 2px 5px 5px;
+    &:focus {
+      outline: none;
+      border-color: $light-color;
+    }
+  }
+
+  input[type=text] {
+    flex-grow: 1;
+  }
+  input[type=number] {
+    width: 34px;
+    height: 30px;
+    margin-right: 10px;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      display: none;
+    }
+  }
+  button {
+    margin-top: 45px;
+    width: 100px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0px;
   }
 }

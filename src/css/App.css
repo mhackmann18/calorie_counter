@@ -57,6 +57,10 @@ ul {
   background-color: white;
 }
 
+.padding-left {
+  padding-left: 8px;
+}
+
 #root {
   height: 100%;
 }
@@ -135,6 +139,13 @@ ul {
 }
 
 .btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
   border-radius: 0;
   border-style: solid;
   border-width: 1px;
@@ -144,12 +155,6 @@ ul {
   width: auto;
   padding: 0 12px 0 12px;
   color: grey;
-}
-
-.btn:focus {
-  outline: none;
-  color: #333;
-  border-color: #333;
 }
 
 .btn:hover {
@@ -272,6 +277,32 @@ ul {
   font-size: 18px;
 }
 
+.custom-food-msg {
+  padding-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: lightgrey;
+  font-size: 15px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.custom-food-msg .link {
+  padding-top: 7px;
+  color: lightgrey;
+  font-size: 13px;
+}
+
+.custom-food-msg .link:hover {
+  color: grey;
+}
+
 .food-item-area {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -282,7 +313,11 @@ ul {
           flex-direction: column;
 }
 
-.food-item-area:last-child {
+.food-item-area:nth-last-child(2) {
+  border-bottom: 1px solid lightgrey;
+}
+
+.food-item-area:nth-last-child(1) {
   border-bottom: 1px solid lightgrey;
 }
 
@@ -332,5 +367,91 @@ ul {
 
 .servings-form input:focus {
   outline: none;
+}
+
+.custom-food-form {
+  font-size: 15px;
+  color: grey;
+  -ms-flex-item-align: center;
+      align-self: center;
+  width: 560px;
+  padding-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.custom-food-form h1 {
+  color: grey;
+  padding-bottom: 30px;
+}
+
+.custom-food-form li {
+  padding-bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.custom-food-form .inline {
+  display: inline;
+}
+
+.custom-food-form label {
+  margin-right: 6px;
+}
+
+.custom-food-form input {
+  border-radius: 0;
+  border-width: 1px;
+  border-color: lightgrey;
+  border-style: solid;
+  height: 40px;
+  padding: 5px 2px 5px 5px;
+}
+
+.custom-food-form input:focus {
+  outline: none;
+  border-color: grey;
+}
+
+.custom-food-form input[type=text] {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.custom-food-form input[type=number] {
+  width: 34px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.custom-food-form input[type=number]::-webkit-outer-spin-button, .custom-food-form input[type=number]::-webkit-inner-spin-button {
+  display: none;
+}
+
+.custom-food-form button {
+  margin-top: 45px;
+  width: 100px;
+  -ms-flex-item-align: center;
+      align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 8px 0px;
 }
 /*# sourceMappingURL=App.css.map */

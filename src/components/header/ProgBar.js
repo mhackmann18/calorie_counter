@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState, useContext } from 'react';
+import FoodContext from '../../context/food/foodContext';
 
-const ProgBar = ({ calories, calorieGoal }) => {
-  const [width, setWidth] = useState(calories/calorieGoal*100)
+const ProgBar = () => {
+  const foodContext = useContext(FoodContext);
+  const { calories, } = foodContext.nutrients;
+  
+  const [width, setWidth] = useState(calories/3000*100)
 
   useEffect(() => {
-    calories/calorieGoal*100 < 100 ? setWidth(calories/calorieGoal*100) : setWidth(100);
-  }, [calories, calorieGoal]);
+    calories/3000*100 < 100 ? setWidth(calories/3000*100) : setWidth(100);
+  }, [calories]);
 
   return (
     <div className="load-bar">
       <div className="prog" style={{ width: `${width}%` }}></div>
     </div>
   )
-}
-
-ProgBar.propTypes = {
-  calories: PropTypes.number.isRequired,
-  calorieGoal: PropTypes.number.isRequired
 }
 
 export default ProgBar;

@@ -1,28 +1,27 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import FoodItem from './FoodItem';
-import PropTypes from 'prop-types';
 import Spinner from '../Spinner';
+import FoodContext from '../../context/food/foodContext';
+import { Link } from 'react-router-dom';
 
-const Foods = ({ foods, addFood, loading, display, removeFood, editFood }) => {
+const Foods = () => {
+  const foodContext = useContext(FoodContext);
+  const { foods, loading } = foodContext;
+
   return (
     <Fragment>
       {
         foods.length === 0 ?
-          loading ? <Spinner/> : <div className="center-msg">
-            <p className="no-results-msg">{display === 'search' ? 'No results found' : 'No foods tracked yet'}</p>
-            </div> 
+          loading ? <Spinner/> :  <div className="center-msg"><p className="no-results-msg">No results found.</p></div> 
           :
           foods.map((food, index)=> {
-            return <FoodItem key={index} food={food} addFood={addFood} display={display} removeFood={removeFood} editFood={editFood}/>
+            return <FoodItem key={index} food={food}/>
           })
       }
+      {foods.length !== 0 && <div className="custom-food-msg"><p>Can't find what you're looking for?</p>
+      <Link to={'/add-custom'} className="link"> Add Custom Food</Link></div>}
     </Fragment>
   )
-}
-
-Foods.propTypes = { 
-  foods: PropTypes.array.isRequired,
-  //addFood: PropTypes.func.isRequired 
 }
 
 export default Foods;

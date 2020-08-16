@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useContext } from 'react';
+import FoodContext from '../../context/food/foodContext';
+import { useHistory } from 'react-router-dom';
 
 /*
   @desc   The Search component returns a form with a text input field and a submit input.
-  @props  This component takes in a function prop to execute when the form is submitted. The function will be passed the string from the text input.
 */
 
-const Search = ({ searchFoods }) => {
+const Search = () => {
+  const foodContext = useContext(FoodContext);
+
   const [text, setText] = useState('');
+  const history = useHistory();
 
   const handleChange = e => setText(e.target.value);
 
   const handleSubmit = e => {
     e.preventDefault();
     e.target.querySelector('.searchbox').blur();
-    searchFoods(text);
+    history.push('/search');
+    foodContext.searchFoods(text);
   }
 
   return (
@@ -23,10 +27,6 @@ const Search = ({ searchFoods }) => {
       <button className="search-btn" type="submit" value="Search"><i className="fas fa-search"></i></button>
     </form>
   )
-}
-
-Search.propTypes = {
-  searchFoods: PropTypes.func.isRequired
 }
 
 export default Search;

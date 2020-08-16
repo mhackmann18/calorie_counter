@@ -1,0 +1,9 @@
+export const SEARCH_FOODS = 'SEARCH_FOODS';
+export const SET_LOGGED_FOODS = 'SET_LOGGED_FOODS';
+export const ADD_FOOD = 'ADD_FOOD';
+export const REMOVE_FOOD = 'REMOVE_FOOD';
+export const EDIT_FOOD = 'EDIT_FOOD';
+export const SET_LOADING = 'SET_LOADING';
+export const SET_MODE = 'SET_MODE';
+export const SET_NUTRIENTS = 'SET_NUTRIENTS';
+export const CLEAR_SEARCH = 'CLEAR_SEARCH';
