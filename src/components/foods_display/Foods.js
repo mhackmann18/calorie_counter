@@ -14,8 +14,8 @@ const Foods = () => {
         foods.length === 0 ?
           loading ? <Spinner/> :  <div className="center-msg"><p className="no-results-msg">No results found.</p></div> 
           :
-          foods.map((food, index)=> {
-            return <FoodItem key={index} food={food}/>
+          foods.map((food)=> {
+            return <FoodItem key={food._id} food={food}/>
           })
       }
       {foods.length !== 0 && <div className="custom-food-msg"><p>Can't find what you're looking for?</p>

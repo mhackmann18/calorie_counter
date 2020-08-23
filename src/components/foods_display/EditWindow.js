@@ -11,7 +11,7 @@ import ServingsForm from './ServingsForm';
 */
 
 const EditWindow = ({ food, getServings, saveChanges, checkmark }) => {
-  const { name, servingSize, brand, calories, protein, fat, carbs, id, servings } = food;
+  const { name, servingSize, brand, calories, protein, fat, carbs, _id, servings } = food;
   const [newFood, setNewFood] = useState({
     name,
     servingSize,
@@ -20,7 +20,7 @@ const EditWindow = ({ food, getServings, saveChanges, checkmark }) => {
     protein,
     fat,
     carbs,
-    id,
+    _id,
     servings
   });
   const [checkMarkClicked, setCheckMarkClicked] = useState(checkmark);
@@ -51,7 +51,7 @@ const EditWindow = ({ food, getServings, saveChanges, checkmark }) => {
       protein: parseFloat(protein / servings * newServings),
       fat: parseFloat(fat / servings * newServings),
       carbs: parseFloat(carbs / servings * newServings),
-      id,
+      _id,
       servings: parseFloat(newServings)
     });
     getServings(newServings);

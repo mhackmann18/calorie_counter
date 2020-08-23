@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ServingsForm from '.././foods_display/ServingsForm';
 
 const EditWindow = ({ food, getServings, saveEdit, checkmark }) => {
-  const { name, servingSize, brand, calories, protein, fat, carbs, id, servings } = food;
+  const { name, servingSize, brand, calories, protein, fat, carbs, _id, servings } = food;
   
   const [newFood, setNewFood] = useState({
     name,
@@ -13,7 +13,7 @@ const EditWindow = ({ food, getServings, saveEdit, checkmark }) => {
     protein,
     fat,
     carbs,
-    id,
+    _id,
     servings
   });
   const [checkMarkClicked, setCheckMarkClicked] = useState(checkmark);
@@ -44,7 +44,7 @@ const EditWindow = ({ food, getServings, saveEdit, checkmark }) => {
       protein: parseFloat(protein / servings * newServings),
       fat: parseFloat(fat / servings * newServings),
       carbs: parseFloat(carbs / servings * newServings),
-      id,
+      _id,
       servings: parseFloat(newServings)
     });
     getServings(newServings);

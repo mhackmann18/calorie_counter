@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import FoodContext from '../../context/food/foodContext';
+import axios from 'axios';
 
 const CustomFood = () => {
   const [name, setName] = useState('');
@@ -26,7 +27,7 @@ const CustomFood = () => {
 
   const fatChange = e => setFat(parseInt(e.target.value));
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     if(
       !isNaN(fat)
@@ -36,11 +37,19 @@ const CustomFood = () => {
       && name !== ''
       && servingSize !== ''
     ){
-      foodContext.addFood({
-        name, brand, calories, protein, fat, carbs, servingSize, servings: 1, id: Math.random()
-      })
+      const req = await axios.post('http://localhost:5000/api/v1/foods', {
+        "name": name,
+        "brand": brand,
+        "servingSize": servingSize,
+        "calories": calories,
+        "fat": fat,
+        "protein": protein,
+        "carbs": carbs,
+        "servings": 1
+      });
+
+      foodContext.addFood(req.data);
     }
-    
   }
 
   return (

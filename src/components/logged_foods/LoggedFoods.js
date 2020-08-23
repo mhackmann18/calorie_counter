@@ -15,8 +15,8 @@ const Foods = () => {
             <p className="no-results-msg">You haven't tracked any foods yet</p>
           </div> 
           :
-          loggedFoods.map((food, index)=> {
-            return <LFItem key={index} food={food}/>
+          loggedFoods.map((food)=> {
+            return <LFItem key={food._id} food={food}/>
           })
       }
     </Fragment>

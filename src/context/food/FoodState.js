@@ -1,6 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 import FoodContext from './foodContext';
 import FoodReducer from './foodReducer';
+import axios from 'axios';
 import { 
   SEARCH_FOODS, 
   SET_LOADING,
@@ -21,7 +22,7 @@ const FoodState = props => {
 
   const isFoodTracked = id => {
     let isTracked = false;
-    state.loggedFoods.forEach(item => item.id === id ? isTracked = true : null);
+    state.loggedFoods.forEach(item => item._id === id ? isTracked = true : null);
     return isTracked;
   }
   const wait = async () => {
@@ -39,35 +40,14 @@ const FoodState = props => {
     dispatch({ type: CLEAR_SEARCH });
     dispatch({ type: SET_LOADING, payload: true });
 
+    const res = await axios.get('http://localhost:5000/api/v1/foods');
+
     if(query !== ''){
       await wait();
-      
-      var foods = [{
-        name: '2% Reduced Fat Milk',
-        servingSize: '1 Cup',
-        brand: 'Prairie Farms',
-        calories: 120,
-        protein: 12,
-        fat: 4,
-        carbs: 11,
-        id: 1,
-        servings: 1
-      },
-      {
-        name: 'Cheddar crackers',
-        servingSize: '28 Crackers',
-        brand: 'Cheez its',
-        calories: 150,
-        protein: 3,
-        fat: 11,
-        carbs: 28,
-        id: 2,
-        servings: 1
-      }];
 
       dispatch({
         type: SEARCH_FOODS,
-        payload: foods
+        payload: res.data
       });
     }
 
@@ -76,10 +56,10 @@ const FoodState = props => {
 
   // Add food
   const addFood = food => {
-    if(isFoodTracked(food.id)){
+    if(isFoodTracked(food._id)){
       const { loggedFoods } = state;
       for(let i = 0; i < loggedFoods.length; ++i){
-        if(food.id === loggedFoods[i].id){
+        if(food._id === loggedFoods[i]._id){
           food.servings += loggedFoods[i].servings;
           food.fat += loggedFoods[i].fat;
           food.protein += loggedFoods[i].protein;
@@ -88,7 +68,7 @@ const FoodState = props => {
         }
         dispatch({
           type: SET_LOGGED_FOODS,
-          payload: loggedFoods.map(item => item.id  === food.id ? food : item )
+          payload: loggedFoods.map(item => item._id  === food._id ? food : item )
         })
       }
     } else {
@@ -104,7 +84,7 @@ const FoodState = props => {
   const removeFood = id => {
     dispatch({
       type: SET_LOGGED_FOODS,
-      payload: state.loggedFoods.filter(item => item.id !== id).map(item => item)
+      payload: state.loggedFoods.filter(item => item._id !== id).map(item => item)
     });
     setNutrients();
   }
@@ -113,7 +93,7 @@ const FoodState = props => {
   const editFood = newFood => {
     dispatch({
       type: SET_LOGGED_FOODS,
-      payload: state.loggedFoods.map(item => item.id  === newFood.id ? newFood : item)
+      payload: state.loggedFoods.map(item => item._id  === newFood._id ? newFood : item)
     });
     setNutrients();
   }

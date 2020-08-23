@@ -37,7 +37,7 @@ const FoodItem = ({ food }) => {
   }
 
   const deleteFood = () => {
-    removeFood(food.id);
+    removeFood(food._id);
   }
 
   const { calories, name, brand, servingSize } = food;
