@@ -8,7 +8,8 @@ const Calories = () => {
 
   return (
     <div id="calorie-progress">
-      <h1>{parseInt(calories)}<span className="sub-content"> of {3000} calories</span></h1>
+      <h1>{parseInt(calories)}<span className="sub-content mobile-rm"> of {3000} calories</span></h1>
+      <p><span className="sub-content mobile-add"> of {3000} calories</span></p>
       <ProgBar/>
     </div>
   )

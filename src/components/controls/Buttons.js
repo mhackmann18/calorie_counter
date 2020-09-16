@@ -4,9 +4,9 @@ import Button from './Button';
 const Buttons = () => {
   return (
     <Fragment>
-      <Button route={'/'} text={'Today\'s Log'} classes={'fas fa-book'}/>
-      <Button route={'/progress'} text={'Progress'} classes={'fas fa-chart-bar'}/>
-      <Button route={'/add-custom'} text={'Add Custom'} classes={'fas fa-plus'}/>
+      <Button route={'/'} text={'Today\'s Log'} classes={'fas fa-book mobile-rm'}/>
+      <Button route={'/progress'} text={'Progress'} classes={'fas fa-chart-bar mobile-rm'}/>
+      <Button route={'/add-custom'} text={'Manual Add'} classes={'fas fa-plus mobile-rm'}/>
     </Fragment>
   )
 }

@@ -19,7 +19,7 @@ const Foods = () => {
           })
       }
       {foods.length !== 0 && <div className="custom-food-msg"><p>Can't find what you're looking for?</p>
-      <Link to={'/add-custom'} className="link"> Add Custom Food</Link></div>}
+      <Link to={'/add-custom'} className="link"> Add food manually</Link></div>}
     </Fragment>
   )
 }

@@ -26,11 +26,12 @@ body, html {
 }
 
 .container {
-  width: 768px;
+  max-width: 768px;
   margin: auto;
   height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 ul { list-style: none; }
@@ -41,6 +42,24 @@ ul { list-style: none; }
   display: flex;
   justify-content: space-between;
   padding-bottom: 20px;
+  @media (max-width: 420px) {
+    padding: 10px;
+    max-width: 370px;
+    margin: 5px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 31% 31% 31%;
+    grid-template-rows: repeat(2, 50px);
+    gap: 10px;
+  }
+}
+
+.mobile-inline {
+  @media (max-width: 420px) {
+    display: inline-block;
+    padding-bottom: 20px;
+    padding-left: 20px;
+  }
 }
 
 .fas {
@@ -49,17 +68,33 @@ ul { list-style: none; }
 
 .padding-left {
   padding-left: 8px;
+  @media (max-width: 420px) {
+    padding: 0;
+  }
 }
 
 #root {
   height: 100%;
 }
 
+.mobile-rm {
+  @media (max-width: 420px) {
+    display: none;
+  }
+}
+
+.mobile-add {
+  display: none;
+  @media (max-width: 420px) {
+    display: block;
+  }
+}
+
 /* Header */
 
 #main-header {
   width: 100%;
-  height: 200px;
+  height: 180px;
   display: flex;
 
   #calorie-progress {
@@ -73,10 +108,15 @@ ul { list-style: none; }
     h1 {
       font-size: 60px;
       color: $dark-color;
-
-      .sub-content {
-        font-size: 20px;
-        color: $light-color;
+      @media (max-width: 420px) {
+        padding-left: 20px;
+      }
+    }
+    .sub-content {
+      font-size: 20px;
+      color: $light-color;
+      @media (max-width: 420px) {
+        padding-left: 20px;
       }
     }
 
@@ -87,6 +127,9 @@ ul { list-style: none; }
       width: 300px;
       height: 3px;
       background: lightgrey;
+      @media (max-width: 420px) {
+        width: 200px;
+      }
 
       .prog {
         height: 100%;
@@ -104,6 +147,9 @@ ul { list-style: none; }
       justify-self: center;
       line-height: 1.8em;
       font-size: 18px;
+      @media (max-width: 420px) {
+        padding-left: 20px;
+      }
       li {
         color: $dark-color;
       }
@@ -130,11 +176,20 @@ ul { list-style: none; }
     color: $dark-color;
     border-color: $dark-color;
   }
+  @media (max-width: 420px) {
+    padding: 0;
+    justify-content: center;
+  }
 }
 
 // Searchbar Component
 .searchbar {
   display: flex;
+  overflow: hidden;
+  @media (max-width: 420px) {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
   .searchbox {
     height: 50px;
     width: 300px;
@@ -172,6 +227,9 @@ ul { list-style: none; }
   width: 100%;
   flex-direction: column;
   flex-grow: 1;
+  @media (max-width: 420px) {
+    height: 100px;
+  }
   .food-item {
     display: flex;
     align-items: center;
@@ -190,8 +248,20 @@ ul { list-style: none; }
         color: $xdark-color; 
         font-weight: 400; 
         padding-bottom: 2px;
+        @media (max-width: 420px) {
+          max-width: 270px;
+          white-space: nowrap;
+          overflow: scroll;
+        }
       }
-      p { color: $light-color; }
+      p { 
+        color: $light-color; 
+        @media (max-width: 420px) {
+          max-width: 270px;
+          white-space: nowrap;
+          overflow: scroll;
+        }
+      }
     }
     &-btns {
       button {
@@ -225,14 +295,17 @@ ul { list-style: none; }
     color: $xlight-color;
     font-size: 13px;
     &:hover { color: $light-color; }
+    padding-bottom: 30px;
   }
 }
 // Foods Component (edit window)
 .food-item-area {
   display: flex;
   flex-direction: column;
-  &:nth-last-child(2) { 
-    border-bottom: 1px solid $xlight-color;
+  &-search {
+    &:nth-last-child(2) { 
+      border-bottom: 1px solid $xlight-color;
+    }
   }
   &:nth-last-child(1) { 
     border-bottom: 1px solid $xlight-color;
@@ -279,15 +352,19 @@ ul { list-style: none; }
 .custom-food-form {
   font-size: 15px;
   color: $light-color;
-  h1 {
-    color: $light-color;
-    padding-bottom: 30px;
-  }
   align-self: center;
   width: 560px;
   padding-top: 20px;
   display: flex;
   flex-direction: column;
+  @media (max-width: 420px) {
+    max-width: 370px;
+    padding: 10px;
+  }
+  h1 {
+    color: $light-color;
+    padding-bottom: 30px;
+  }
   li {
     padding-bottom: 30px;
     display: flex;
@@ -311,7 +388,6 @@ ul { list-style: none; }
       border-color: $light-color;
     }
   }
-
   input[type=text] {
     flex-grow: 1;
   }
@@ -332,5 +408,12 @@ ul { list-style: none; }
     align-items: center;
     justify-content: center;
     padding: 8px 0px;
+  }
+}
+
+#chartdiv {
+  height: 500px;
+  @media (max-width: 420px) {
+    max-height: 470px;
   }
 }

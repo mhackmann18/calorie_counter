@@ -35,6 +35,54 @@ const FoodState = props => {
     //eslint-disable-next-line
   },[state.loggedFoods]);
 
+  // Load today's logged foods from local storage
+  // eslint-disable-next-line
+  const loadFoodsLS = async () => {
+    const ls = window.localStorage;
+    // If this is the first time using the app
+    if(!ls.getItem('history')){
+      const date = new Date();
+      ls.setItem('history', JSON.stringify([{ date, foods: [] }]));
+    } else {
+      // Look for current date in history
+      let history = JSON.parse(ls.getItem('history'));
+      let found = false;
+      history.forEach((obj) => {
+        let date = new Date(obj.date);
+        let currentDate = new Date();
+        if(date.getDate() === currentDate.getDate() && date.getMonth() === currentDate.getMonth() && date.getFullYear() === currentDate.getFullYear()){
+          dispatch({
+            type: SET_LOGGED_FOODS,
+            payload: obj.foods
+          });
+          found = true;
+        }
+      });
+      if(!found){
+        const date = new Date();
+        let history = JSON.parse(ls.getItem('history'));
+        history.push({ date, foods: [] });
+        ls.setItem('history', JSON.stringify(history));
+      }
+    }
+    console.log(ls);
+  }
+
+  // Adds a food to localStorage
+  // eslint-disable-next-line
+  const addFoodLS = food => {
+    let history = JSON.parse(window.localStorage.getItem('history'));
+      history.forEach((obj) => {
+        let date = new Date(obj.date);
+        let currentDate = new Date();
+        if(date.getDate() === currentDate.getDate() && date.getMonth() === currentDate.getMonth() && date.getFullYear() === currentDate.getFullYear()){
+          obj.foods.push(food);
+          console.log(history);
+          window.localStorage.setItem('history', JSON.stringify(history));
+        }
+      });
+  }
+
   // Search foods
   const searchFoods = async query => {
     dispatch({ type: CLEAR_SEARCH });
@@ -69,13 +117,13 @@ const FoodState = props => {
         dispatch({
           type: SET_LOGGED_FOODS,
           payload: loggedFoods.map(item => item._id  === food._id ? food : item )
-        })
+        });
       }
     } else {
       dispatch({
         type: SET_LOGGED_FOODS,
         payload: [...state.loggedFoods, food]
-      })
+      });
     }
     setNutrients();
   }

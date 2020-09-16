@@ -60,14 +60,12 @@ const CustomFood = () => {
           <label htmlFor="name">Food Name: </label>
           <input required
           type="text"
-          placeholder='ex. "Hot & Spicy snack crackers"'
           onChange={nameChange}/>
         </li>
         <li>
           <label htmlFor="name">Brand Name: </label>
           <input 
           type="text"
-          placeholder='ex. "Cheez-It"'
           onChange={brandChange}
           />
         </li>
@@ -75,36 +73,39 @@ const CustomFood = () => {
           <label htmlFor="name">Serving Size: </label>
           <input required
           type="text"
-          placeholder='ex. "28 crackers"'
           onChange={servingSizeChange}/>
         </li>
         <li className="inline">
-          <label htmlFor="name">Calories: </label>
+          <label className="mobile-inline" htmlFor="name">Calories: </label>
           <input required
           min="0" 
           type="number"
-          onChange={caloriesChange}/>
+          onChange={caloriesChange}
+          max="5000"/>
         </li>
         <li className="inline">
-          <label htmlFor="name">Protein (grams): </label>
+          <label className="mobile-inline" htmlFor="name">Protein (grams): </label>
           <input required
           min="0" 
           type="number"
-          onChange={proteinChange}/>
+          onChange={proteinChange}
+          max="500"/>
         </li>
         <li className="inline">
-          <label htmlFor="name">Carbs (grams): </label>
+          <label className="mobile-inline" htmlFor="name">Carbs (grams): </label>
           <input required
           min="0" 
           type="number"
-          onChange={carbsChange}/>
+          onChange={carbsChange}
+          max="1000"/>
         </li>
         <li className="inline">
-          <label htmlFor="name">Fat (grams): </label>
+          <label className="mobile-inline" htmlFor="name">Fat (grams): </label>
           <input required
           min="0" 
           type="number"
-          onChange={fatChange}/>
+          onChange={fatChange}
+          max="500"/>
         </li>
       </ul>
       <button className="btn">Add Food</button>

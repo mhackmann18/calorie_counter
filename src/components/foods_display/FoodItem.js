@@ -40,7 +40,7 @@ const FoodItem = ({ food }) => {
 
   const { calories, name, brand, servingSize } = food;
   return (
-    <div className="food-item-area">
+    <div className="food-item-area-search">
       <div className="food-item">
         <div className="food-item-label">
           <h3>{brand} {name}</h3>

@@ -25,7 +25,7 @@ body, html {
 }
 
 .container {
-  width: 768px;
+  max-width: 768px;
   margin: auto;
   height: 100%;
   display: -webkit-box;
@@ -35,6 +35,9 @@ body, html {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 ul {
@@ -53,6 +56,30 @@ ul {
   padding-bottom: 20px;
 }
 
+@media (max-width: 420px) {
+  .flex-container {
+    padding: 10px;
+    max-width: 370px;
+    margin: 5px;
+    overflow: hidden;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 31% 31% 31%;
+        grid-template-columns: 31% 31% 31%;
+    -ms-grid-rows: (50px)[2];
+        grid-template-rows: repeat(2, 50px);
+    gap: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .mobile-inline {
+    display: inline-block;
+    padding-bottom: 20px;
+    padding-left: 20px;
+  }
+}
+
 .fas {
   background-color: white;
 }
@@ -61,14 +88,36 @@ ul {
   padding-left: 8px;
 }
 
+@media (max-width: 420px) {
+  .padding-left {
+    padding: 0;
+  }
+}
+
 #root {
   height: 100%;
+}
+
+@media (max-width: 420px) {
+  .mobile-rm {
+    display: none;
+  }
+}
+
+.mobile-add {
+  display: none;
+}
+
+@media (max-width: 420px) {
+  .mobile-add {
+    display: block;
+  }
 }
 
 /* Header */
 #main-header {
   width: 100%;
-  height: 200px;
+  height: 180px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -98,9 +147,21 @@ ul {
   color: #333;
 }
 
-#main-header #calorie-progress h1 .sub-content {
+@media (max-width: 420px) {
+  #main-header #calorie-progress h1 {
+    padding-left: 20px;
+  }
+}
+
+#main-header #calorie-progress .sub-content {
   font-size: 20px;
   color: grey;
+}
+
+@media (max-width: 420px) {
+  #main-header #calorie-progress .sub-content {
+    padding-left: 20px;
+  }
 }
 
 #main-header #calorie-progress .load-bar {
@@ -109,6 +170,12 @@ ul {
   width: 300px;
   height: 3px;
   background: lightgrey;
+}
+
+@media (max-width: 420px) {
+  #main-header #calorie-progress .load-bar {
+    width: 200px;
+  }
 }
 
 #main-header #calorie-progress .load-bar .prog {
@@ -132,6 +199,12 @@ ul {
       justify-self: center;
   line-height: 1.8em;
   font-size: 18px;
+}
+
+@media (max-width: 420px) {
+  #main-header #macros ul {
+    padding-left: 20px;
+  }
 }
 
 #main-header #macros ul li {
@@ -163,10 +236,28 @@ ul {
   border-color: #333;
 }
 
+@media (max-width: 420px) {
+  .btn {
+    padding: 0;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
 .searchbar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
+}
+
+@media (max-width: 420px) {
+  .searchbar {
+    -ms-grid-column: 1;
+        grid-column-start: 1;
+    grid-column-end: 4;
+  }
 }
 
 .searchbar .searchbox {
@@ -221,6 +312,12 @@ ul {
           flex-grow: 1;
 }
 
+@media (max-width: 420px) {
+  .foods {
+    height: 100px;
+  }
+}
+
 .foods .food-item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -247,8 +344,24 @@ ul {
   padding-bottom: 2px;
 }
 
+@media (max-width: 420px) {
+  .foods .food-item-label h3 {
+    max-width: 270px;
+    white-space: nowrap;
+    overflow: scroll;
+  }
+}
+
 .foods .food-item-label p {
   color: grey;
+}
+
+@media (max-width: 420px) {
+  .foods .food-item-label p {
+    max-width: 270px;
+    white-space: nowrap;
+    overflow: scroll;
+  }
 }
 
 .foods .food-item-btns button {
@@ -297,6 +410,7 @@ ul {
   padding-top: 7px;
   color: lightgrey;
   font-size: 13px;
+  padding-bottom: 30px;
 }
 
 .custom-food-msg .link:hover {
@@ -313,7 +427,7 @@ ul {
           flex-direction: column;
 }
 
-.food-item-area:nth-last-child(2) {
+.food-item-area-search:nth-last-child(2) {
   border-bottom: 1px solid lightgrey;
 }
 
@@ -385,6 +499,13 @@ ul {
           flex-direction: column;
 }
 
+@media (max-width: 420px) {
+  .custom-food-form {
+    max-width: 370px;
+    padding: 10px;
+  }
+}
+
 .custom-food-form h1 {
   color: grey;
   padding-bottom: 30px;
@@ -453,5 +574,15 @@ ul {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 8px 0px;
+}
+
+#chartdiv {
+  height: 500px;
+}
+
+@media (max-width: 420px) {
+  #chartdiv {
+    max-height: 470px;
+  }
 }
 /*# sourceMappingURL=App.css.map */
